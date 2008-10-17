@@ -63,7 +63,7 @@ This method returns the contents of all collected data.
 
 =cut
 
-sub combined_contents_ref {
+sub combined_contents {
   my ($self) = @_;
   return ${ $self->{combined} };
 }
