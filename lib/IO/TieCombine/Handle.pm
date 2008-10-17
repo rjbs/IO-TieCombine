@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 package IO::TieCombine::Handle;
+# ABSTRACT: tied filehandles for IO::TieCombine
 
 use Carp ();
 

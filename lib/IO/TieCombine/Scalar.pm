@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 package IO::TieCombine::Scalar;
+# ABSTRACT: tied scalars for IO::TieCombine
 
 use Carp ();
 
@@ -29,8 +30,6 @@ sub STORE {
     unless index($value, $$output_ref) == 0;
   
   my $extra = substr $value, length $$output_ref, length $value;
-
-  printf "appending <%s> to <%s>\n", $extra, $self->{slot_name};
 
   ${ $self->{combined_ref} } .= $extra;
   return ${ $self->{output_ref} } = $value;

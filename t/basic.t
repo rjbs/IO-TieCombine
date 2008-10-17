@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use IO::TieCombine;
-use Test::More 'no_plan';
+use Test::More tests => 5;
 
 my $hub = IO::TieCombine->new;
 
@@ -17,6 +17,8 @@ sub append_bar {
   $_[0] .= 'bar';
 }
 
+tie my $scalar_C, $hub, 'Charlie';
+
 $$scalar_A .= 'foo';
 print $fh_B "beta1";
 $$scalar_B .= 'embargo';
@@ -29,13 +31,13 @@ print $fh_A "hot pants";
 $$scalar_B .= 'ooga';
 print $fh_B "beta2";
 
-use Data::Dumper;
-print Dumper($hub);
+$scalar_C .= 'fin';
 
-is($hub->slot_contents('Alpha'), 'foobarhot pants', 'Alpha slot');
-is($hub->slot_contents('Beta'),  'beta1embargooogabeta2', 'Beta slot');
+is($hub->slot_contents('Alpha'),   'foobarhot pants',       'Alpha slot');
+is($hub->slot_contents('Beta'),    'beta1embargooogabeta2', 'Beta slot');
+is($hub->slot_contents('Charlie'), 'fin',                   'Charlie slot');
 is(
   $hub->combined_contents,
-  'foobeta1embargobarhot pantsoogabeta2',
+  'foobeta1embargobarhot pantsoogabeta2fin',
   'combined',
 );
