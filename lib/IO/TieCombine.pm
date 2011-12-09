@@ -103,6 +103,20 @@ sub _tie_args {
   };
 }
 
+=method clear_slot
+
+  $hub->clear_slot( $slot_name );
+
+This sets the slot back to an empty string.
+
+=cut
+
+sub clear_slot {
+  my ($self, $slot_name) = @_;
+  ${ $self->_slot_ref($slot_name) } = '';
+  return;
+}
+
 =method fh
 
   my $fh = $hub->fh( $slot_name );

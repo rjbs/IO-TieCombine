@@ -20,7 +20,8 @@ sub TIEHANDLE {
 sub PRINT {
   my ($self, @output) = @_;
 
-  my $joined = join((defined $, ? $, : ''), @output);
+  my $joined = join((defined $, ? $, : q{}), @output)
+             . (defined $\ ? $\ : q{});
 
   ${ $self->{output_ref}   } .= $joined;
   ${ $self->{combined_ref} } .= $joined;

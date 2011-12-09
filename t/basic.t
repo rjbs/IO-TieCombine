@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use IO::TieCombine;
-use Test::More tests => 5;
+use Test::More;
 
 my $hub = IO::TieCombine->new;
 
@@ -41,3 +41,20 @@ is(
   'foobeta1embargobarhot pantsoogabeta2fin',
   'combined',
 );
+
+if ($] >= 5.010) {
+  subtest "the 'say' built-in" => sub {
+    plan tests => 1;
+    my $ok = eval q{
+      use feature 'say';
+      $hub->clear_slot('Alpha');
+      print $fh_A "foo\n";
+      say   $fh_A "foo";
+      is($hub->slot_contents('Alpha'), "foo\nfoo\n", "say appends a newline");
+      1;
+    };
+    die $@ unless $ok;
+  };
+}
+
+done_testing;
