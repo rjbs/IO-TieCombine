@@ -38,6 +38,11 @@ And then:
   $hub->slot_contents('x');   # And now for something completely
   $hub->slot_contents('err'); # different.
 
+B<ACHTUNG!!>  Because of a serious problem with Perl 5.10.0, output sent to a
+tied filehandle using C<say> B<will not have the expected newline>.  5.10.1 or
+later is needed.  Since 5.10.0 is broken in so many other ways, you should
+really upgrade anyway.
+
 =cut
 
 =method new

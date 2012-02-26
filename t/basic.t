@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use IO::TieCombine;
-use Test::More;
+use Test::More 0.96;
 
 my $hub = IO::TieCombine->new;
 
@@ -42,7 +42,7 @@ is(
   'combined',
 );
 
-if ($] >= 5.010) {
+if ($] >= 5.010001) {
   subtest "the 'say' built-in" => sub {
     plan tests => 1;
     my $ok = eval q{

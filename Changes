@@ -1,6 +1,7 @@
 Revision history for IO-TieCombine
 
 {{$NEXT}}
+          "say" to a tied fh on 5.10.0 is broken; we will not test it
 
 1.001     2011-12-09 10:52:01 America/New_York
           TieCombine filehandles now respect $\ so that "say $tied" will work;
