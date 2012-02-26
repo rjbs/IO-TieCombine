@@ -1,6 +1,8 @@
 Revision history for IO-TieCombine
 
 {{$NEXT}}
+
+1.002     2012-02-26 15:26:49 America/New_York
           "say" to a tied fh on 5.10.0 is broken; we will not test it
 
 1.001     2011-12-09 10:52:01 America/New_York
