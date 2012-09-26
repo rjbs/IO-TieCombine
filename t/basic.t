@@ -48,8 +48,8 @@ if ($] >= 5.010001) {
     my $ok = eval q{
       use feature 'say';
       $hub->clear_slot('Alpha');
+      say   $fh_A "foo"; # do say before print to detect bug
       print $fh_A "foo\n";
-      say   $fh_A "foo";
       is($hub->slot_contents('Alpha'), "foo\nfoo\n", "say appends a newline");
       1;
     };
