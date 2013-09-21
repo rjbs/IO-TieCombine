@@ -43,6 +43,13 @@ tied filehandle using C<say> B<will not have the expected newline>.  5.10.1 or
 later is needed.  Since 5.10.0 is broken in so many other ways, you should
 really upgrade anyway.
 
+B<ACHTUNG!!>  Because of a different problem with Perls 5.10.1 - 5.16.3, if you
+send output to a tied filehandle using C<say>, and C<$\> is undefined (which is
+the default), B<< C<$\> will not be restored to C<undef> after the C<say> >>!
+This means that once you've used C<say> to print to I<any> tied filehandle, you
+have corrupted the global state of your program.  Either start your program by
+setting C<$\> to an empty string, which should be safe, or upgrade to 5.18.0.
+
 =cut
 
 =method new
