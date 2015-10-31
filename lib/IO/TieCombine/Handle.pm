@@ -37,6 +37,6 @@ sub PRINTF {
 
 sub OPEN     { return $_[0] }
 sub BINMODE  { return 1; }
-sub FILENO   { return 0 + $_[0] }
+sub FILENO   { return 0 - $_[0] }
 
 1;

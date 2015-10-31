@@ -1,6 +1,8 @@
 Revision history for IO-TieCombine
 
 {{$NEXT}}
+        - fileno on a IO::TieCombine::Handle now returns a negative value
+          so they can be known to be artificial
 
 1.004     2014-02-01 19:15:17-05:00 America/New_York
         - update bugtracker link
